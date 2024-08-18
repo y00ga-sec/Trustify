@@ -25,7 +25,7 @@ Trustify uses a Powershell porting of Rubeus to interact with Kerberos through t
 
 ## Get-TrustifyDetails
 Simply collect useful information about the current trusts. This function will help you selecting the attack that is best suited for your use case :
-<br />
+
 ![Get-TrustifyDetails](https://github.com/user-attachments/assets/f3fcd181-5fab-449c-98f3-203209c7ae41)
 
 
