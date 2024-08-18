@@ -94,6 +94,10 @@ This one uses PSexec to :
 
 Due to Configuration Naming Context (NC), this vulnerable template will replicate its way up and be requestable for any user in any domain in the target domain, providing the CA serves this other domain in the Forest : <br />
 
+
+https://github.com/user-attachments/assets/ccd96f24-2c1b-46d7-987c-41e8348af2ad
+
+
  
  <br />
 
