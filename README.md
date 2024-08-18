@@ -41,14 +41,14 @@ _Requires :_
 
 ## Compare-SAMAccountNames
 This function collect every samaccountnames in your current domain as well as account names in the domain you need to attack for correlation. If an account in your current domain matches with another one in your target domain, they may also have matching passwords :<br />
-[Uploading Compare-SamAccountNames.mov…](https://github.com/user-attachments/assets/4ef13ca5-a745-4e93-88f4-2193f17fde65) <br />
+ <br />
 
 _Requires :_
 - Target Domain
 
 ## Check-ForeignACL
 Use this function to check if domain objects in your current domain have ActiveDirectory permissions over other objects in another domain :<br />
-[Uploading Check-ForeignACL.mov…](https://github.com/user-attachments/assets/5983671b-4d57-4fc3-8806-18cd2bf5cc5d)  <br />
+  <br />
 
 _Requires :_
 - Target Domain
@@ -57,7 +57,6 @@ _Requires :_
 This function performs SIDHistory injection when forging a TGT for a designated account. If SIDFiltering is not enforced, you might request a TGT for a user in your current domain and adds the SID of a high-privileged group in your target domain :<br />
 
 
-https://github.com/user-attachments/assets/70c9a445-bf1c-4507-ac18-b6f5ee1920d8
  <br />
 
 _Requires :_
@@ -68,7 +67,9 @@ _Requires :_
 
 ## Exploit-UnconstrainedDelegation
 For this attack, adding your own machine to the domain and set it up for Unconstrained Delegation is required (you can try to perform it from a server, but EDRs will probably catch the Rubeus listener...). From there, this function will start a TGT listener in a new PowerShell session. You can then force the target domain DC to authenticate to your machine through authentication coercion (PetitPotam, SpoolSample, DFSCoerce,...). When authenticating back to you, the target DC will leave a copy of its TGT on your machine, which you can then renew and use to perform DCsync <br />
-https://github.com/user-attachments/assets/a662bbd1-8ce9-4c40-ae84-1430830eff4a <br />
+
+
+<br />
 
 _Requires :_
 - Target Domain Controller hostname
@@ -79,7 +80,9 @@ This one uses PSexec to :
 - Import the [PKI-Escalate](https://github.com/heartburn-dev/PKI-Escalate) to get the required permissions over the specific container that host `pKIEnrollmentService` objects and create an ESC1 vulnerable ADCS template
 
 Due to Configuration Naming Context (NC), this vulnerable template will replicate its way up and be requestable for any user in any domain in the target domain, providing the CA serves this other domain in the Forest : <br />
-https://github.com/user-attachments/assets/9e1c069a-f621-4a66-93e8-0dc29164cd3b <br />
+
+ 
+ <br />
 
 _Requires :_
 - Target Domain Controller hostname
