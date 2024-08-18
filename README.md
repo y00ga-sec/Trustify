@@ -24,14 +24,14 @@ Import-Module .\Trustify.ps1
 Trustify uses a Powershell porting of Rubeus to interact with Kerberos through trusts as well as other tools. Make sure that your attack machine have a proper Internet access so that the script can import its dependencies
 
 ## Get-TrustifyDetails
-Simply collect useful information about the current trusts. This function will help you selecting the attack that is best suited for your use case :
+Simply collect useful information about the current trusts. This function will help you selecting the attack that is best suited for your use case : <br />
 ![Get-TrustifyDetails](https://github.com/user-attachments/assets/f3fcd181-5fab-449c-98f3-203209c7ae41)
 
 
 ## Forge-TrustAccountTicket
 When a one-way (outbound) trust is set up from **Forest-B** to **Forest-A**, a trust account named ``B$`` is created in Forest-A. This trust account, ``B$`` , can have its cleartext credentials and Kerberos keys extracted from any Domain Controller in either forest with admin privileges.
 
-This attack consists in taking over the Trust account by leveraging the trust Key. It is made possible by the fact that the **trust key actually represents the password of the trust account**. Indeed, when Forest-B compromise is achieved, an attacker can extract the associated Trust Key on Forest-B root domain DC and use it to authenticate as the ``B$`` account in Forest-A.
+This attack consists in taking over the Trust account by leveraging the trust Key. It is made possible by the fact that the **trust key actually represents the password of the trust account**. Indeed, when Forest-B compromise is achieved, an attacker can extract the associated Trust Key on Forest-B root domain DC and use it to authenticate as the ``B$`` account in Forest-A. <br />
 
 _Requires :_
 - TrustAccountName
@@ -40,22 +40,25 @@ _Requires :_
 
 
 ## Compare-SAMAccountNames
-This function collect every samaccountnames in your current domain as well as account names in the domain you need to attack for correlation. If an account in your current domain matches with another one in your target domain, they may also have matching passwords :
-https://github.com/user-attachments/assets/c1a2e71a-fa73-4bb8-9aa2-91fef75ed4ff <br />
+This function collect every samaccountnames in your current domain as well as account names in the domain you need to attack for correlation. If an account in your current domain matches with another one in your target domain, they may also have matching passwords :<br />
+[Uploading Compare-SamAccountNames.mov…](https://github.com/user-attachments/assets/4ef13ca5-a745-4e93-88f4-2193f17fde65) <br />
 
 _Requires :_
 - Target Domain
 
 ## Check-ForeignACL
-Use this function to check if domain objects in your current domain have ActiveDirectory permissions over other objects in another domain :
-https://github.com/user-attachments/assets/24544bdb-57d7-4f46-9b36-2ae831b618ef <br />
+Use this function to check if domain objects in your current domain have ActiveDirectory permissions over other objects in another domain :<br />
+[Uploading Check-ForeignACL.mov…](https://github.com/user-attachments/assets/5983671b-4d57-4fc3-8806-18cd2bf5cc5d)  <br />
 
 _Requires :_
 - Target Domain
 
 ## Add-ExtraSID
-This function performs SIDHistory injection when forging a TGT for a designated account. If SIDFiltering is not enforced, you might request a TGT for a user in your current domain and adds the SID of a high-privileged group in your target domain :
-https://github.com/user-attachments/assets/00cf8543-ca44-4eef-a079-355a0a72ba7f <br />
+This function performs SIDHistory injection when forging a TGT for a designated account. If SIDFiltering is not enforced, you might request a TGT for a user in your current domain and adds the SID of a high-privileged group in your target domain :<br />
+
+
+https://github.com/user-attachments/assets/70c9a445-bf1c-4507-ac18-b6f5ee1920d8
+ <br />
 
 _Requires :_
 - Username of the account that will receive ExtraSID
@@ -64,7 +67,7 @@ _Requires :_
 - Name of a high privileged group in the target Domain
 
 ## Exploit-UnconstrainedDelegation
-For this attack, adding your own machine to the domain and set it up for Unconstrained Delegation is required (you can try to perform it from a server, but EDRs will probably catch the Rubeus listener...). From there, this function will start a TGT listener in a new PowerShell session. You can then force the target domain DC to authenticate to your machine through authentication coercion (PetitPotam, SpoolSample, DFSCoerce,...). When authenticating back to you, the target DC will leave a copy of its TGT on your machine, which you can then renew and use to perform DCsync
+For this attack, adding your own machine to the domain and set it up for Unconstrained Delegation is required (you can try to perform it from a server, but EDRs will probably catch the Rubeus listener...). From there, this function will start a TGT listener in a new PowerShell session. You can then force the target domain DC to authenticate to your machine through authentication coercion (PetitPotam, SpoolSample, DFSCoerce,...). When authenticating back to you, the target DC will leave a copy of its TGT on your machine, which you can then renew and use to perform DCsync <br />
 https://github.com/user-attachments/assets/a662bbd1-8ce9-4c40-ae84-1430830eff4a <br />
 
 _Requires :_
@@ -75,7 +78,7 @@ This one uses PSexec to :
 - Connect as SYSTEM to a designated Domain Controller in the domain you compromised
 - Import the [PKI-Escalate](https://github.com/heartburn-dev/PKI-Escalate) to get the required permissions over the specific container that host `pKIEnrollmentService` objects and create an ESC1 vulnerable ADCS template
 
-Due to Configuration Naming Context (NC), this vulnerable template will replicate its way up and be requestable for any user in any domain in the target domain, providing the CA serves this other domain in the Forest
+Due to Configuration Naming Context (NC), this vulnerable template will replicate its way up and be requestable for any user in any domain in the target domain, providing the CA serves this other domain in the Forest : <br />
 https://github.com/user-attachments/assets/9e1c069a-f621-4a66-93e8-0dc29164cd3b <br />
 
 _Requires :_
