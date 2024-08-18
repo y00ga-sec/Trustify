@@ -41,7 +41,12 @@ _Requires :_
 
 ## Compare-SAMAccountNames
 This function collect every samaccountnames in your current domain as well as account names in the domain you need to attack for correlation. If an account in your current domain matches with another one in your target domain, they may also have matching passwords :<br />
- <br />
+
+
+https://github.com/user-attachments/assets/37147507-c3cc-4e8b-8f9a-48bf6472a3f2
+
+
+<br />
 
 _Requires :_
 - Target Domain
@@ -67,7 +72,7 @@ _Requires :_
 
 ## Exploit-UnconstrainedDelegation
 For this attack, adding your own machine to the domain and set it up for Unconstrained Delegation is required (you can try to perform it from a server, but EDRs will probably catch the Rubeus listener...). From there, this function will start a TGT listener in a new PowerShell session. You can then force the target domain DC to authenticate to your machine through authentication coercion (PetitPotam, SpoolSample, DFSCoerce,...). When authenticating back to you, the target DC will leave a copy of its TGT on your machine, which you can then renew and use to perform DCsync <br />
-
+https://github.com/user-attachments/assets/ce40bca6-dddd-4de5-8deb-bc2458d8e25f
 
 <br />
 
