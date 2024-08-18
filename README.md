@@ -53,7 +53,11 @@ _Requires :_
 
 ## Check-ForeignACL
 Use this function to check if domain objects in your current domain have ActiveDirectory permissions over other objects in another domain :<br />
-  <br />
+  
+
+https://github.com/user-attachments/assets/c4373f52-422a-4c6b-9b8d-cade807dae4c
+
+<br />
 
 _Requires :_
 - Target Domain
