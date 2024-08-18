@@ -24,7 +24,8 @@ Import-Module .\Trustify.ps1
 Trustify uses a Powershell porting of Rubeus to interact with Kerberos through trusts as well as other tools. Make sure that your attack machine have a proper Internet access so that the script can import its dependencies
 
 ## Get-TrustifyDetails
-Simply collect useful information about the current trusts. This function will help you selecting the attack that is best suited for your use case : <br />
+Simply collect useful information about the current trusts. This function will help you selecting the attack that is best suited for your use case :
+<br />
 ![Get-TrustifyDetails](https://github.com/user-attachments/assets/f3fcd181-5fab-449c-98f3-203209c7ae41)
 
 
@@ -80,7 +81,11 @@ _Requires :_
 
 ## Exploit-UnconstrainedDelegation
 For this attack, adding your own machine to the domain and set it up for Unconstrained Delegation is required (you can try to perform it from a server, but EDRs will probably catch the Rubeus listener...). From there, this function will start a TGT listener in a new PowerShell session. You can then force the target domain DC to authenticate to your machine through authentication coercion (PetitPotam, SpoolSample, DFSCoerce,...). When authenticating back to you, the target DC will leave a copy of its TGT on your machine, which you can then renew and use to perform DCsync <br />
-https://github.com/user-attachments/assets/ce40bca6-dddd-4de5-8deb-bc2458d8e25f
+
+
+https://github.com/user-attachments/assets/cf4c91a1-4786-48b3-b481-4b976c1e9a2a
+
+
 
 <br />
 
