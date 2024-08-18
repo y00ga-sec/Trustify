@@ -66,6 +66,10 @@ _Requires :_
 This function performs SIDHistory injection when forging a TGT for a designated account. If SIDFiltering is not enforced, you might request a TGT for a user in your current domain and adds the SID of a high-privileged group in your target domain :<br />
 
 
+
+https://github.com/user-attachments/assets/ba967156-df2e-47ae-a469-af973ec55df9
+
+
  <br />
 
 _Requires :_
