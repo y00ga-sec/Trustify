@@ -3,9 +3,9 @@
 
 ![logo](https://github.com/user-attachments/assets/59ecc4ad-ef36-4e4a-9499-e8b8d893d407)
 
-Trustify a a powershell script that act as a wrapper around other tools and scripts, specifically for attacking Active Directory domains when a trust is setup.
+Trustify is a powershell script that act as a wrapper around other tools and scripts, specifically for attacking Active Directory domains when a trust is setup.
 
-The script simply needs to be imported in a domain-joined Windows machine PowerShell session (the best way remains to add your own attack Windows machine to your compromised domain). From here, you can call multiple functions that correspond to different trust-related attacks depending on what you need to do. Those functions will allow you to retrieve information, attack and take over your target domain, providing there is an AD trust to exploit.
+The script simply needs to be imported on a domain-joined Windows machine PowerShell session (the best way remains to add your own attack Windows machine to your compromised domain). From here, you can call multiple functions that correspond to different trust-related attacks depending on what you need to do. Those functions will allow you to retrieve information, attack and take over your target domain, providing there is an AD trust to exploit.
 
 If you want to read more about the attacks and tricks that Trustify automates, I wrote an article that is available [here](https://blog.y00ga.lol/PERSO/PUBLISH/Article+perso/(Don't)+Trust+me%2C+a+little+study+on+attacking+Active+Directory+Trusts)
 
@@ -13,7 +13,7 @@ If you want to read more about the attacks and tricks that Trustify automates, I
 
 ## Usage
 
-In a domain-joined Windows machine, import the script into your powershell session
+On a domain-joined Windows machine, import the script into your powershell session
 ````
 Import-Module .\Trustify.ps1
 ````
