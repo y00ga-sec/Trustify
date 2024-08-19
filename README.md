@@ -7,7 +7,7 @@ Trustify a a powershell script that act as a wrapper around other tools and scri
 
 The script simply needs to be imported in a domain-joined Windows machine PowerShell session (the best way remains to add your own attack Windows machine to your compromised domain). From here, you can call multiple functions that correspond to different trust-related attacks depending on what you need to do. Those functions will allow you to retrieve information, attack and take over your target domain, providing there is an AD trust to exploit.
 
-If you want to read more about the attacks and tricks that Trustify automates, I wrote an article that is available [here](https://blog.y00ga.lol/PUBLISH/Forensike%2C+or+Forensics+for+bad+guys
+If you want to read more about the attacks and tricks that Trustify automates, I wrote an article that is available [here](https://blog.y00ga.lol/PERSO/PUBLISH/Article+perso/(Don't)+Trust+me%2C+a+little+study+on+attacking+Active+Directory+Trusts)
 
 ----------
 
@@ -95,7 +95,7 @@ _Requires :_
 ## Abuse-ADCS
 This one uses PSexec to :
 - Connect as SYSTEM to a designated Domain Controller in the domain you compromised
-- Import the [PKI-Escalate](https://github.com/heartburn-dev/PKI-Escalate) to get the required permissions over the specific container that host `pKIEnrollmentService` objects and create an ESC1 vulnerable ADCS template
+- Import the [PKI-Escalate](https://github.com/heartburn-dev/PKI-Escalate) tool to get the required permissions over the specific container that host `pKIEnrollmentService` objects and create an ESC1 vulnerable ADCS template
 
 Due to Configuration Naming Context (NC), this vulnerable template will replicate its way up and be requestable for any user in any domain in the target domain, providing the CA serves this other domain in the Forest : <br />
 
