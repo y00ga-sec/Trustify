@@ -114,6 +114,6 @@ _Requires :_
 ----------
 # Credits 
 
-- Hearburn for PKI-Escalate : https://github.com/heartburn-dev/PKI-Escalate
+- Heartburn for PKI-Escalate : https://github.com/heartburn-dev/PKI-Escalate
 - beauknowstech for Invoke-Hagrid : https://github.com/beauknowstech/Invoke-Hagrid.ps1/blob/main/Invoke-Hagrid.ps1
 - harmj0y for Powerview : https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1
