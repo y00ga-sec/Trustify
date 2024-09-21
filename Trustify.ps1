@@ -36,6 +36,7 @@ function Get-TrustifyDetails {
             IsTreeParent            = $trust.IsTreeParent
             IsTreeRoot              = $trust.IsTreeRoot
       SelectiveAuthenticationStatus = $trust.SelectiveAuthentication
+	    TGTDelegation	    = $trust.TGTDelegation
             SIDFilteringForest      = $trust.SIDFilteringForestAware
             SIDFilteringQuarantined = $trust.SIDFilteringQuarantined
         }
