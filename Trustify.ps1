@@ -183,12 +183,23 @@ param (
     # Search for potential Shadow Principal
     Get-ADObject -SearchBase ("CN=Shadow Principal Configuration,CN=Services," + (Get-ADRootDSE).configurationNamingContext) -Filter * -Properties * | select Name,member,msDS-ShadowPrincipalSid | fl
     #Use the Get-DomainObjectACL function to retrieve any potential ACL in the current domain over an object from a designated foreign domain
-    Get-DomainObjectAcl -Domain $TargetDomain -ResolveGUIDs -Identity * -ErrorAction SilentlyContinue | ? { 
-	    ($_.ActiveDirectoryRights -match 'WriteProperty|GenericAll|GenericWrite|WriteDacl|WriteOwner') -and `
-	    ($_.AceType -match 'AccessAllowed') -and `
-	    ($_.SecurityIdentifier -match '^S-1-5-.*-[1-9]\d{3,}$') -and `
-	    ($_.SecurityIdentifier -notmatch $DomainSid)
-    }
+    # Fetch the ACLs and process them
+    Get-DomainObjectAcl -Domain $TargetDomain -ResolveGUIDs -Identity * -ErrorAction SilentlyContinue | Where-Object { 
+    	($_.ActiveDirectoryRights -match 'WriteProperty|GenericAll|GenericWrite|WriteDacl|WriteOwner') -and `
+    	($_.AceType -match 'AccessAllowed') -and `
+    	($_.SecurityIdentifier -match '^S-1-5-.*-[1-9]\d{3,}$') -and `
+    	($_.SecurityIdentifier -notmatch $DomainSid)
+	} | ForEach-Object {
+    		# Resolve the SID to its corresponding name using ConvertFrom-SID
+    		$resolvedName = ConvertFrom-SID $_.SecurityIdentifier
+    # Add the resolved name to the object for output
+    $_ | Add-Member -MemberType NoteProperty -Name ResolvedName -Value $resolvedName -Force
+    # Output the updated object
+    $_
+}
+
+
+    
 }
 
 # ALMOST DONE
